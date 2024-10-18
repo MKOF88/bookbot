@@ -3,8 +3,7 @@ def main():
     content = get_book_text(filepath)
     wordcount = count_words(content)
     charcount = count_characters(content)
-
-    print(charcount)
+    print_report(filepath, wordcount, charcount)
 
 def get_book_text(path):
     with open(path) as file:
@@ -28,5 +27,14 @@ def count_characters(text):
             chars[char] += 1    
     
     return chars
+
+def print_report(path, wordcount, charcount):
+    print(f"--- Begin report of {path} ---")
+    print(f"{wordcount} words found in the document\n")
+
+    for char in charcount:
+        print(f"The {char} character was found {charcount[char]} times")
+
+    print("--- End report ---")
 
 main()
